@@ -1,8 +1,10 @@
 $def with (room,score)
 
 <h1> $room.name </h1>
-
-<h3>your score is $score</h3>
+$if room.name == "Death":
+    <h3>your score is $(score-1)</h3>
+$else:
+    <h3>your score is $score</h3>
 
 <pre>
 $room.description
@@ -13,7 +15,7 @@ $room.description
 $if room.name != "Death" and room.name != "The End" and room.name != "Laser Weapon Armory" and room.name !="Escape Pod":
     <pre>Your options are:</pre>
     <ul>
-        $for i in room.paths.keys():
+        $for i in room.paths.keys()
             $if i=="*":
                 $continue
             $else:
@@ -21,6 +23,7 @@ $if room.name != "Death" and room.name != "The End" and room.name != "Laser Weap
     </ul>
 
 $if room.name == "Death" or room.name == "The End":
+    
     <p>
         <a href="/">Play Again?</a>
     </p>

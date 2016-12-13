@@ -1,4 +1,8 @@
 import random
+import lexicon
+import lexicon_parser
+from lexicon_parser import ParserError
+
 class Room(object):
 
     def __init__(self, name, description):
@@ -6,8 +10,22 @@ class Room(object):
         self.description = description
         self.paths = {}
 
+    # Incorporated the parser into the go method
     def go(self, direction):
-        return self.paths.get(direction,self.paths.get("*"))
+        # direction with only one word does not need parsing
+        if len(direction.split()) == 1:
+            return self.paths.get(direction,self.paths.get("*"))
+        # Larger sentences do. Here it searches using key value if key contains verb and object
+        else:
+            try:
+                # ParserError needs to be handled, otherwise crashes site with bad input
+                sentence = lexicon_parser.parse_sentence(lexicon.scan(direction))
+            except ParserError:
+                return self.paths.get("*",None)
+            for i in self.paths.keys():
+                if sentence.verb in i and sentence.object in i:
+                    return self.paths.get(i,self.paths.get("*"))
+
 
     def add_paths(self, paths):
         self.paths.update(paths)
@@ -134,6 +152,7 @@ implodes as the hull ruptures, crushing your body
 into jam jelly.
 """
 )
+
 
 escape_pod.add_paths({
     escape_pod.rand: the_end_winner,

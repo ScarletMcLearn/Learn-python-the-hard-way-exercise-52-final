@@ -77,6 +77,8 @@ class Index(object):
 class GameEngine(object):
     def GET(self):
         if session.room:
+            if session.room.name == "The End" or session.room.name == "Death":
+                session.kill()
             return render.show_room(room=session.room,score = session.score)
         else:
             # returns this if your input is not found
