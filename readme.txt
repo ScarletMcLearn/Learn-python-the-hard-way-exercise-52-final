@@ -21,11 +21,14 @@ Hello, this is my final project for Zed Shaw's 'Learn python the hard way'
 
 6) Random number generators and limited tries for laser weapon armory (Using subclass in map.py)
 
+7) Parser has been added to the map module's go() method
+
 
 *Things that do not work*
 
 
-1) Parser has not yet been added (currently working on that)
 
-2) Css not added yet
+1) Css not added yet
+
+2) Score updates every time a wrong number is inserted in laser weapon armory
 
