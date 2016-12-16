@@ -23,6 +23,8 @@ Hello, this is my final project for Zed Shaw's 'Learn python the hard way'
 
 7) Parser has been added to the map module's go() method
 
+8) Scores update properly 
+
 
 *Things that do not work*
 
@@ -30,5 +32,4 @@ Hello, this is my final project for Zed Shaw's 'Learn python the hard way'
 
 1) Css not added yet
 
-2) Score updates every time a wrong number is inserted in laser weapon armory
 

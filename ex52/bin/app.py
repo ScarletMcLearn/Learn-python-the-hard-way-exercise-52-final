@@ -20,7 +20,6 @@ if web.config.get('_session') is None:
     # rand as a session variable is only used for tests
     session = web.session.Session(app,store,initializer = {'room':None,
         'rand':map.laser_weapon_armory.rand,
-        'score':0,
         'logged_in':False,
         })
     web.config._session = session
@@ -79,7 +78,7 @@ class GameEngine(object):
         if session.room:
             if session.room.name == "The End" or session.room.name == "Death":
                 session.kill()
-            return render.show_room(room=session.room,score = session.score)
+            return render.show_room(room=session.room)
         else:
             # returns this if your input is not found
             return render.you_died()
@@ -91,7 +90,6 @@ class GameEngine(object):
         # Fixed bug in show_room.html
         if session.room  and form.action:
             session.room = session.room.go(form.action)
-            session.score+=1
 
         web.seeother("/game")
 ########################################################

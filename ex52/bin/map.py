@@ -4,6 +4,7 @@ import lexicon_parser
 from lexicon_parser import ParserError
 
 class Room(object):
+    score = 0
 
     def __init__(self, name, description):
         self.name = name
@@ -24,6 +25,7 @@ class Room(object):
                 return self.paths.get("*",None)
             for i in self.paths.keys():
                 if sentence.verb in i and sentence.object in i:
+                    Room.score+=1
                     return self.paths.get(i,self.paths.get("*"))
 
 
@@ -31,7 +33,7 @@ class Room(object):
         self.paths.update(paths)
 
 
-# A special class for Laserroom because it was causing problems
+# A special class for rooms with randomly generated numbers because it was causing problems
 class Customroom(Room):
     def __init__(self,name,description,rand = None,count = None):
         super(Customroom,self).__init__(name,description)
@@ -39,8 +41,10 @@ class Customroom(Room):
         self.count = count
 
 
+    # Special go method that works for randomly generated numbers 
     def go(self,direction):
         if direction == self.rand:
+            Room.score+=1
             return self.paths.get(direction,self.paths.get("*"))
         elif self.count:
             self.count -=1
@@ -50,10 +54,6 @@ class Customroom(Room):
                 return self.paths.get("*",None)
         else:
             return self.paths.get("*",None)
-
-
-
-
 
 
 

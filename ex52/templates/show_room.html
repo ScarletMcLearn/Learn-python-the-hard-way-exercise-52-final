@@ -1,10 +1,13 @@
-$def with (room,score)
+$def with (room)
 
 <h1> $room.name </h1>
+
+
 $if room.name == "Death":
-    <h3>your score is $(score-1)</h3>
+    <h3>Your Score is $(room.score - 1)</h3>
 $else:
-    <h3>your score is $score</h3>
+    <h3>Your score is $(room.score)</h3>
+
 
 <pre>
 $room.description
@@ -21,6 +24,7 @@ $if room.name != "Death" and room.name != "The End" and room.name != "Laser Weap
             $else:
                 <li> $i</li>
     </ul>
+
 
 $if room.name == "Death" or room.name == "The End":
     
