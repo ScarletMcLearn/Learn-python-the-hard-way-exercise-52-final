@@ -131,18 +131,18 @@ interference.  You get to the chamber with the escape pods, and
 now need to pick one to take.  Some of them could be damaged
 but you don't have time to look.  There's 5 pods, which one
 do you take?
-""",rand = random.randint(1,5))
+""",rand = str(random.randint(1,5)))
 
 
 the_end_winner = Room("The End",
 """
-You jump into pod 2 and hit the eject button.
+You jump into pod {} and hit the eject button.
 The pod easily slides out into space heading to
 the planet below.  As it flies to the planet, you look
 back and see your ship implode then explode like a
 bright star, taking out the Gothon ship at the same
 time.  You won!
-""")
+""".format(escape_pod.rand))
 
 
 the_end_loser = Room("The End",
