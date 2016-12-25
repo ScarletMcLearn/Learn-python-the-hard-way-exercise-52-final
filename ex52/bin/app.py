@@ -66,7 +66,8 @@ class Index(object):
                 # Reload module to reset room.count and rands inside map module
                 game_list[map] = reload(game_list[map])
                 # Rand for testing
-                session.rand = game_list[map].laser_weapon_armory.rand
+                session.rand = game_list[map].RAND1
+                session.rand2 = game_list[map].RAND2
                 session.room = game_list[map].START
                 web.seeother("/game")
             else:

@@ -87,7 +87,7 @@ def test_game():
     checkstuff(x['rand'],"The Bridge")
     # ^ Checking with the rand value which should be the solution and return the bridge
     checkstuff("slowly place the bomb","Escape Pod")
-    checkstuff(x['rand'],"The End")
+    checkstuff(x['rand2'],"The End")
     del cookie
 
     ## Initializing another cookie because writing cookie2 = cookie will return the same cookie since address

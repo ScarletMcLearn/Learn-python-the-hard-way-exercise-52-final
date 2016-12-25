@@ -61,6 +61,8 @@ class Customroom(Room):
 
 
 
+
+
 # Death room
 generic_death = Room("Death", "You died Dude.")
 
@@ -141,11 +143,11 @@ The pod easily slides out into space heading to
 the planet below.  As it flies to the planet, you look
 back and see your ship implode then explode like a
 bright star, taking out the Gothon ship at the same
-time.  You won!
+time. You won!
 """.format(escape_pod.rand))
 
 
-the_end_loser = Room("The End",
+the_end_loser = Room("Death",
 """
 You jump into a random pod and hit the eject button.
 The pod escapes out into the void of space, then
@@ -180,7 +182,11 @@ central_corridor.add_paths({
 })
 
 
+# Testing variables to use in tests
+RAND1 = laser_weapon_armory.rand
+RAND2 = escape_pod.rand
 
+#Starting point
 START = central_corridor
 
 
