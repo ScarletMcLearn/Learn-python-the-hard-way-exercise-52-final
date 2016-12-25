@@ -19,7 +19,7 @@ if web.config.get('_session') is None:
     store = web.session.DiskStore('sessions')
     # rand as a session variable is only used for tests
     session = web.session.Session(app,store,initializer = {'room':None,
-        'rand':map.laser_weapon_armory.rand,
+        'rand':None,
         'logged_in':False,
         })
     web.config._session = session
@@ -58,12 +58,15 @@ class Index(object):
             return render.roomchooser(game_list = game_list)
         else:
             return "You must log in first"
-##
     def POST(self):
         map = web.input().mapname.capitalize()
         # this is use to setup the session with starting values
         if session.logged_in:
             if map in game_list:
+                # Reload module to reset room.count and rands inside map module
+                game_list[map] = reload(game_list[map])
+                # Rand for testing
+                session.rand = game_list[map].laser_weapon_armory.rand
                 session.room = game_list[map].START
                 web.seeother("/game")
             else:

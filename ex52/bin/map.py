@@ -13,6 +13,7 @@ class Room(object):
 
     # Incorporated the parser into the go method
     def go(self, direction):
+        Room.score+=1
         # direction with only one word does not need parsing
         if len(direction.split()) == 1:
             return self.paths.get(direction,self.paths.get("*"))
@@ -25,7 +26,6 @@ class Room(object):
                 return self.paths.get("*",None)
             for i in self.paths.keys():
                 if sentence.verb in i and sentence.object in i:
-                    Room.score+=1
                     return self.paths.get(i,self.paths.get("*"))
 
 
@@ -43,12 +43,13 @@ class Customroom(Room):
 
     # Special go method that works for randomly generated numbers 
     def go(self,direction):
+        Room.score+=1
         if direction == self.rand:
-            Room.score+=1
             return self.paths.get(direction,self.paths.get("*"))
         elif self.count:
             self.count -=1
             if self.count >= 0:
+                Room.score-=1
                 return self
             else:
                 return self.paths.get("*",None)
