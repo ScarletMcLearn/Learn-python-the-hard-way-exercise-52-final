@@ -1,0 +1,25 @@
+body{
+    background-image: url("terminal.jpg");
+    color: white;
+    text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
+    font-size: 150%;
+    
+}
+
+
+h1 {
+    color: white;
+    text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
+}
+
+#login{
+    color: white;
+}
+
+li{
+    list-style: square;
+}
+
+a{
+    color:white;
+}

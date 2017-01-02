@@ -188,6 +188,7 @@ RAND2 = escape_pod.rand
 
 #Starting point
 START = central_corridor
+NAME = "Gothonweb"
 
 
 

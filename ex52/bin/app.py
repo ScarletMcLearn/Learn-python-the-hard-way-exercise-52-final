@@ -27,6 +27,7 @@ if web.config.get('_session') is None:
 else:
     session = web.config._session
 
+# creating template render object
 render = web.template.render('templates/',base = "layout")
 
 ###################################################
@@ -59,7 +60,7 @@ class Index(object):
         else:
             return "You must log in first"
     def POST(self):
-        map = web.input().mapname.capitalize()
+        map = web.input().mapname.lower().capitalize()
         # this is use to setup the session with starting values
         if session.logged_in:
             if map in game_list:
