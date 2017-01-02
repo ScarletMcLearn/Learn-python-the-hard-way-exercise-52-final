@@ -25,11 +25,11 @@ Hello, this is my final project for Zed Shaw's 'Learn python the hard way'
 
 8) Scores update properly 
 
-
-*Things that do not work*
-
+9) Added css
 
 
-1) Css not added yet
+
+
+
 
 
